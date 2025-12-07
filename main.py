@@ -27,7 +27,8 @@ These are the steps:\n{step_texts}
 Next, I will ask you questions about this recipe.'''
     # print(prompt)
     
-    chat = client.chats.create(model="gemini-2.5-flash")
+    # chat = client.chats.create(model="gemini-2.5-flash")
+    chat = client.chats.create(model="gemini-2.5-flash-lite")
     response = chat.send_message_stream(prompt)
     for chunk in response:
         print(chunk.text, end="")

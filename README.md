@@ -1,18 +1,38 @@
-## Part 2 — LLM-Only System
+## Project2 Part 2 — LLM-Only System
 
-### Deliverables for Part 2
-You will turn in:
-- Your code (in a .zip file).
-    - This should include the code that:
-        - Accepts a recipe URL from the user
-        - Scrapes the recipe page
-        - Sends relevant content to the LLM and returns an answer
-    - Include any prompt(s) you used for the LLM.
-    - Similarly to project 1 and project 2 part 1, a readme.txt with link to your GitHub repo.
-- Conversation analysis examples (.pdf with text and screenshots):
-    - 3 example conversations where the LLM-only approach performs better than your rules-based system.
-    For each of these 3, write 1–3 sentences explaining why the LLM did better (e.g., handled ambiguity, answered open-ended cooking questions, better intent recognition, did not require an explicit and rigid parse to understand recipe information, etc.).
-    - 3 example conversations where the LLM-only approach fails or struggles.
-    For each of these 3, write 1–3 sentences explaining why you think it failed (e.g., hallucinated a step, lost track of state, gave unsafe advice, misunderstood what “that” referred to, etc.).
-    These failure examples do not have to be cases that your rules-based system could handle — they can just be cases where the LLM itself breaks.
-- You should also list the model name and settings (e.g. gemini-2.5-flash-lite, temperature, etc.) used for each conversation.
+Replace the entire architecture with a single, prompt-driven LLM system.  
+Goal: see how well a powerful LLM can understand recipes and support conversational interaction without explicit rules.
+
+### Requirements:
+google-genai  
+python-dotenv  
+beautifulsoup4  
+requests
+
+### LLM Setup (Gemini API)  
+Use Google’s Gemini API to build and test recipe assistant.
+
+**Step 1 — Create an API Key**  
+Go to Google AI StudioLinks to an external site.  
+Sign in with your Google account.  
+Create a Gemini API key and copy it — you’ll need it for authentication.  
+
+**Step 2 — Save Your API Key Securely**  
+Create a file named `.env` in your project directory and add the following line:  
+```
+GEMINI_API_KEY=your_api_key_here
+```
+This keeps your key private and prevents it from being hardcoded in your scripts.
+Make sure that your `.env` file is included in your `.gitignore` so it is not pushed to GitHub.  
+
+To load the API key from your `.env` file in Python, use the python-dotenv library:  
+
+**Step 3 — Install Required Libraries**
+Install the necessary dependencies:
+```
+pip install google-genai python-dotenv
+```
+google-genai — official client for accessing Gemini models
+python-dotenv — loads environment variables from your .env file
+
+**Step 4 — Load the API Key and Initialize the Client**
